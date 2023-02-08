@@ -5,7 +5,6 @@ import java.util.*;
 
 public class API {
 
-    // Access Currency Beacon API
     public static Map<String, Double> accessAPI() {
 
         StringBuilder information = new StringBuilder();
@@ -24,7 +23,6 @@ public class API {
             // Check for successful response code
             if (!(responseCode == 200)) {
                 throw new RuntimeException("Connection unsuccessful");
-
             } else {
 
                 Scanner scanner = new Scanner(url.openStream());
@@ -33,7 +31,6 @@ public class API {
                 while (scanner.hasNext()) {
                     information.append(scanner.nextLine());
                 }
-
                 scanner.close();
             }
 

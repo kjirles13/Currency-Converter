@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="17b0cc12-ce6e-4160-abe3-41c37ca67e64" name="Changes" comment="" />
+    <list default="true" id="17b0cc12-ce6e-4160-abe3-41c37ca67e64" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/API.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/API.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/CurrencyExchangeApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CurrencyExchangeApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/API.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/API.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/CurrencyExchangeApp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/CurrencyExchangeApp.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,6 +23,9 @@
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -50,7 +60,7 @@
     </configuration>
     <configuration name="CurrencyExchangeApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="CurrencyExchangeApp" />
-      <module name="CurrencyExchange" />
+      <module name="currency-converter" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>

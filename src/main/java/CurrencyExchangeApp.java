@@ -19,17 +19,19 @@ public class CurrencyExchangeApp {
         System.out.print("Please enter an amount in USD without any dollar sign symbols: ");
 
         //Get initial currency value and check for number format exception
-        while (!userInput.hasNextDouble()) {
+        boolean validInput = false;
+        BigDecimal initialAmount = new BigDecimal("0");
+
+        while (!validInput) {
             try {
-                Double.parseDouble(userInput.nextLine());
+               initialAmount = new BigDecimal(userInput.nextLine());
+               validInput = true;
             } catch (NumberFormatException nfe) {
                 System.out.println();
                 System.out.println("Whoops, something went wrong. Either that's not a number or it's not in the correct format.");
                 System.out.print("Remember no dollar sign, and use this format (10.50). Try again: ");
             }
         }
-
-        BigDecimal initialAmount = new BigDecimal(userInput.nextLine());
 
         System.out.println("Calculating...");
 
@@ -64,7 +66,6 @@ public class CurrencyExchangeApp {
                 System.out.println("If you need a list of acceptable currency types and their identification symbol, please type 'List'");
                 System.out.println();
                 System.out.print("What are type of currency are you converting this to?: ");
-
             }
 
         } while (!currencyRates.containsKey(conversionCurrencyType.toUpperCase(Locale.ROOT)));

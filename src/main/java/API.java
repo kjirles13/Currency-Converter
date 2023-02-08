@@ -24,7 +24,6 @@ public class API {
             if (!(responseCode == 200)) {
                 throw new RuntimeException("Connection unsuccessful");
             } else {
-
                 Scanner scanner = new Scanner(url.openStream());
 
                 // Append incoming info to StringBuilder
@@ -33,7 +32,6 @@ public class API {
                 }
                 scanner.close();
             }
-
         } catch (IOException e) {
             System.out.println("IO Exception: Connection to API unsuccessful.");
         }

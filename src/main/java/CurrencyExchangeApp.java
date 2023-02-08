@@ -1,5 +1,4 @@
 import java.math.BigDecimal;
-import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Scanner;
@@ -12,10 +11,8 @@ public class CurrencyExchangeApp {
 
         System.out.println("============================");
         System.out.println("Currency Exchange Calculator");
-        System.out.println("============================");
-        System.out.println();
-        System.out.println("Welcome to the currency exchange calculator!");
-        System.out.println();
+        System.out.println("============================\n");
+        System.out.println("Welcome to the currency exchange calculator!\n");
         System.out.print("Please enter an amount in USD without any dollar sign symbols: ");
 
         //Get initial currency value and check for number format exception
@@ -24,8 +21,8 @@ public class CurrencyExchangeApp {
 
         while (!validInput) {
             try {
-               initialAmount = new BigDecimal(userInput.nextLine());
-               validInput = true;
+                initialAmount = new BigDecimal(userInput.nextLine());
+                validInput = true;
             } catch (NumberFormatException nfe) {
                 System.out.println();
                 System.out.println("Whoops, something went wrong. Either that's not a number or it's not in the correct format.");
@@ -38,11 +35,11 @@ public class CurrencyExchangeApp {
         // Access API and get currency rates
         Map<String, Double> currencyRates = API.accessAPI();
 
-        String conversionCurrencyType = "";
-
         System.out.println("\nWhat type of currency are you converting this to?");
         System.out.println("Please only enter that currency's three letter identification symbol.");
         System.out.print("If you need a list of acceptable currency types and their identification symbol, please enter 'list': ");
+
+        String conversionCurrencyType = "";
 
         // Get currency type to convert
         do {
@@ -75,4 +72,5 @@ public class CurrencyExchangeApp {
 
         userInput.close();
     }
+    //Calculator method
 }

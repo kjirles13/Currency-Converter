@@ -36,44 +36,42 @@ public class CurrencyExchangeApp {
         System.out.println("Calculating...");
 
         // Access API and get currency rates
-        Map<String, Double> currencyRates = new HashMap<>();
-        currencyRates = API.accessAPI();
+        Map<String, Double> currencyRates = API.accessAPI();
 
         String conversionCurrencyType = "";
 
-        System.out.println();
-        System.out.println("What are type of currency are you converting this to?");
-        System.out.print("Please only enter a three letter identification symbol: ");
+        System.out.println("\nWhat type of currency are you converting this to?");
+        System.out.println("Please only enter that currency's three letter identification symbol.");
+        System.out.print("If you need a list of acceptable currency types and their identification symbol, please enter 'list': ");
 
         // Get currency type to convert
         do {
             conversionCurrencyType = userInput.nextLine();
 
-            // Print Map of currency figures to console
             if (conversionCurrencyType.equalsIgnoreCase("list")) {
-                System.out.println("List of acceptable currency inputs: ");
+                System.out.println("\nList of acceptable currency inputs:\n");
 
                 for (Map.Entry<String, Double> rate : currencyRates.entrySet()) {
                     System.out.println(String.format("%s : %s", rate.getKey(), rate.getValue()));
                 }
 
-                System.out.println();
-                System.out.print("What are type of currency are you converting this to?: ");
+                System.out.print("\nWhat type of currency are you converting this to?: ");
 
             } else if (!currencyRates.containsKey(conversionCurrencyType.toUpperCase(Locale.ROOT))) {
-                System.out.println();
-                System.out.println("Please only enter the listed currency types: ");
-                System.out.println("If you need a list of acceptable currency types and their identification symbol, please type 'List'");
-                System.out.println();
+                System.out.println("\nPlease only enter that currency's three letter identification symbol.");
+                System.out.println("If you need a list of acceptable currency types and their identification symbol, please enter 'list'\n");
                 System.out.print("What are type of currency are you converting this to?: ");
             }
-
         } while (!currencyRates.containsKey(conversionCurrencyType.toUpperCase(Locale.ROOT)));
+
+        System.out.println("\nCalculating...\n");
 
         // Call method to convert currency
         String finalAmount = Calculator.calculateCurrency((conversionCurrencyType.toUpperCase(Locale.ROOT)), initialAmount);
 
+        System.out.println("============================");
         System.out.println(String.format("$%s in %s is %s", initialAmount, conversionCurrencyType.toUpperCase(Locale.ROOT), finalAmount));
+        System.out.println("============================");
 
         userInput.close();
     }

@@ -1,4 +1,5 @@
 import java.math.BigDecimal;
+import java.text.DecimalFormat;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Scanner;
@@ -58,7 +59,7 @@ public class CurrencyExchangeApp {
         System.out.println("\nCalculating...\n");
 
         // Call method to convert currency
-        String finalAmount = Calculator.calculateCurrency((conversionCurrencyType.toUpperCase(Locale.ROOT)), initialAmount);
+        String finalAmount = calculateCurrency((conversionCurrencyType.toUpperCase(Locale.ROOT)), initialAmount);
 
         System.out.println("============================");
         System.out.println(String.format("$%s in %s is %s", initialAmount, conversionCurrencyType.toUpperCase(Locale.ROOT), finalAmount));
@@ -73,6 +74,13 @@ public class CurrencyExchangeApp {
         for (Map.Entry<String, Double> rate : currencyRates.entrySet()) {
             System.out.println(String.format("%s : %s", rate.getKey(), rate.getValue()));
         }
+    }
+
+    public static String calculateCurrency(String currencySymbol, BigDecimal amount) {
+        Map<String, Double> currencyRateMap = API.accessAPI();
+        BigDecimal conversionRate = BigDecimal.valueOf(currencyRateMap.get(currencySymbol));
+        DecimalFormat df = new DecimalFormat("0.00");
+        return df.format(amount.multiply(conversionRate));
     }
 
 }

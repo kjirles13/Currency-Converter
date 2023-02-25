@@ -37,7 +37,7 @@ public class CurrencyExchangeApp {
 
         System.out.println("\nWhat type of currency are you converting this to?");
         System.out.println("Please only enter that currency's three letter identification symbol.");
-        System.out.print("If you need a list of acceptable currency types and their identification symbol, please enter 'list': ");
+        System.out.print("If you need a list of acceptable currency types and their identification symbol, please enter 'L': ");
 
         String conversionCurrencyType = "";
 
@@ -45,18 +45,12 @@ public class CurrencyExchangeApp {
         do {
             conversionCurrencyType = userInput.nextLine();
 
-            if (conversionCurrencyType.equalsIgnoreCase("list")) {
-                System.out.println("\nList of acceptable currency inputs:\n");
-
-                for (Map.Entry<String, Double> rate : currencyRates.entrySet()) {
-                    System.out.println(String.format("%s : %s", rate.getKey(), rate.getValue()));
-                }
-
+            if (conversionCurrencyType.equalsIgnoreCase("L")) {
+                printCurrencyList(currencyRates);
                 System.out.print("\nWhat type of currency are you converting this to?: ");
-
             } else if (!currencyRates.containsKey(conversionCurrencyType.toUpperCase(Locale.ROOT))) {
                 System.out.println("\nPlease only enter that currency's three letter identification symbol.");
-                System.out.println("If you need a list of acceptable currency types and their identification symbol, please enter 'list'\n");
+                System.out.println("If you need a list of acceptable currency types and their identification symbol, please enter 'L'\n");
                 System.out.print("What are type of currency are you converting this to?: ");
             }
         } while (!currencyRates.containsKey(conversionCurrencyType.toUpperCase(Locale.ROOT)));
@@ -72,5 +66,13 @@ public class CurrencyExchangeApp {
 
         userInput.close();
     }
-    //Calculator method
+
+    public static void printCurrencyList(Map<String, Double> currencyRates) {
+        System.out.println("\nList of acceptable currency inputs:\n");
+
+        for (Map.Entry<String, Double> rate : currencyRates.entrySet()) {
+            System.out.println(String.format("%s : %s", rate.getKey(), rate.getValue()));
+        }
+    }
+
 }

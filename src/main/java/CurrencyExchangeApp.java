@@ -7,12 +7,13 @@ import java.util.Scanner;
 public class CurrencyExchangeApp {
 
     public static void main(String[] args) {
+        String spacer = "============================";
 
         Scanner userInput = new Scanner(System.in);
 
-        System.out.println("============================");
+        System.out.println(spacer);
         System.out.println("Currency Exchange Calculator");
-        System.out.println("============================\n");
+        System.out.println(spacer + "\n");
         System.out.println("Welcome to the currency exchange calculator!\n");
         System.out.print("Please enter an amount in USD without any dollar sign symbols: ");
 
@@ -25,8 +26,7 @@ public class CurrencyExchangeApp {
                 initialAmount = new BigDecimal(userInput.nextLine());
                 validInput = true;
             } catch (NumberFormatException nfe) {
-                System.out.println();
-                System.out.println("Whoops, something went wrong. Either that's not a number or it's not in the correct format.");
+                System.out.println("\nWhoops, something went wrong. Either that's not a number or it's not in the correct format.");
                 System.out.print("Remember no dollar sign, and use this format (10.50). Try again: ");
             }
         }
@@ -48,6 +48,7 @@ public class CurrencyExchangeApp {
 
             if (conversionCurrencyType.equalsIgnoreCase("L")) {
                 printCurrencyList(currencyRates);
+                System.out.println(spacer);
                 System.out.print("\nWhat type of currency are you converting this to?: ");
             } else if (!currencyRates.containsKey(conversionCurrencyType.toUpperCase(Locale.ROOT))) {
                 System.out.println("\nPlease only enter that currency's three letter identification symbol.");
@@ -56,14 +57,12 @@ public class CurrencyExchangeApp {
             }
         } while (!currencyRates.containsKey(conversionCurrencyType.toUpperCase(Locale.ROOT)));
 
-        System.out.println("\nCalculating...\n");
-
         // Call method to convert currency
-        String finalAmount = calculateCurrency((conversionCurrencyType.toUpperCase(Locale.ROOT)), initialAmount);
+        BigDecimal finalAmount = calculateCurrency(currencyRates, initialAmount, (conversionCurrencyType.toUpperCase(Locale.ROOT)));
 
-        System.out.println("============================");
-        System.out.println(String.format("$%s in %s is %s", initialAmount, conversionCurrencyType.toUpperCase(Locale.ROOT), finalAmount));
-        System.out.println("============================");
+        System.out.println("\n" + spacer);
+        System.out.println(String.format("$%.2f in %s is %.2f", initialAmount, conversionCurrencyType.toUpperCase(Locale.ROOT), finalAmount));
+        System.out.println(spacer);
 
         userInput.close();
     }
@@ -76,11 +75,9 @@ public class CurrencyExchangeApp {
         }
     }
 
-    public static String calculateCurrency(String currencySymbol, BigDecimal amount) {
-        Map<String, Double> currencyRateMap = API.accessAPI();
-        BigDecimal conversionRate = BigDecimal.valueOf(currencyRateMap.get(currencySymbol));
-        DecimalFormat df = new DecimalFormat("0.00");
-        return df.format(amount.multiply(conversionRate));
+    public static BigDecimal calculateCurrency(Map<String, Double> currencyRates, BigDecimal amount, String currencySymbol) {
+        BigDecimal conversionRate = BigDecimal.valueOf(currencyRates.get(currencySymbol));
+        BigDecimal finalAmount = amount.multiply(conversionRate);
+        return finalAmount;
     }
-
 }

@@ -16,7 +16,7 @@ public class CurrencyExchangeApp {
         System.out.println("Welcome to the currency exchange calculator!\n");
         System.out.print("Please enter an amount in USD without any dollar sign symbols: ");
 
-        //Get initial currency value and check for number format exception
+        //Get initial currency value
         boolean validInput = false;
         BigDecimal initialAmount = new BigDecimal("0");
 
@@ -31,13 +31,13 @@ public class CurrencyExchangeApp {
             }
         }
 
-        System.out.println("Calculating...");
+        System.out.println("\nCalculating...");
 
         // Access API and get currency rates
         Map<String, Double> currencyRates = API.accessAPI();
 
         System.out.println("\nWhat type of currency are you converting this to?");
-        System.out.println("Please only enter that currency's three letter identification symbol.");
+        System.out.println("\nOnly enter that currency's three letter identification symbol.");
         System.out.print("If you need a list of acceptable currency types and their identification symbol, please enter 'L': ");
 
         String conversionCurrencyType = "";

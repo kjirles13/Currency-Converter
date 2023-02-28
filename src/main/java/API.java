@@ -4,11 +4,13 @@ import java.net.URL;
 import java.util.*;
 
 public class API {
+    private Map<String, Double> rates = new HashMap<String, Double>();
+    
+
 
     public static Map<String, Double> accessAPI() {
 
         StringBuilder information = new StringBuilder();
-        Map<String, Double> currencyRates = new HashMap<String, Double>();
 
         try {
             URL url = new URL("https://api.currencybeacon.com/v1/latest?api_key=bb017cfe3c7311e2f3c774f8af75c55a");
@@ -38,12 +40,14 @@ public class API {
         String infoSubString = infoFullString.substring((infoFullString.indexOf("ADA") - 1), infoFullString.indexOf("}}}"));
         String[] infoArray = infoSubString.split(",");
 
+        Map<String, Double> rates = new HashMap<>();
+
         for (String rate : infoArray) {
             String[] subArray = rate.split(":");
             String key = subArray[0].replace("\"", "");
-            currencyRates.put(key, Double.valueOf(subArray[1]));
+            rates.put(key, Double.valueOf(subArray[1]));
         }
 
-        return currencyRates;
+        return rates;
     }
 }

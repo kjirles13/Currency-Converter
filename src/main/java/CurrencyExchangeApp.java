@@ -19,7 +19,7 @@ public class CurrencyExchangeApp {
 
         //Get initial currency value
         boolean validInput = false;
-        BigDecimal initialAmount = new BigDecimal("0");
+        BigDecimal initialAmount = BigDecimal.ZERO;
 
         while (!validInput) {
             try {

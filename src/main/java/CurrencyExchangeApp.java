@@ -1,5 +1,6 @@
+import model.ExchangeRates;
+
 import java.math.BigDecimal;
-import java.text.DecimalFormat;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Scanner;
@@ -34,7 +35,7 @@ public class CurrencyExchangeApp {
         System.out.println("\nCalculating...");
 
         // Access API and get currency rates
-        Map<String, Double> currencyRates = API.accessAPI();
+        ExchangeRates exchangeRates = new ExchangeRates(API.accessAPI());
 
         System.out.println("\nWhat type of currency are you converting this to?");
         System.out.println("\nOnly enter that currency's three letter identification symbol.");
@@ -47,32 +48,25 @@ public class CurrencyExchangeApp {
             conversionCurrencyType = userInput.nextLine();
 
             if (conversionCurrencyType.equalsIgnoreCase("L")) {
-                printCurrencyList(currencyRates);
+                System.out.println("\nList of exchange rates:\n");
+                System.out.println(exchangeRates.toString());
                 System.out.println(spacer);
                 System.out.print("\nWhat type of currency are you converting this to?: ");
-            } else if (!currencyRates.containsKey(conversionCurrencyType.toUpperCase(Locale.ROOT))) {
+            } else if (!exchangeRates.getRates().containsKey(conversionCurrencyType.toUpperCase(Locale.ROOT))) {
                 System.out.println("\nPlease only enter that currency's three letter identification symbol.");
                 System.out.println("If you need a list of acceptable currency types and their identification symbol, please enter 'L'\n");
                 System.out.print("What are type of currency are you converting this to?: ");
             }
-        } while (!currencyRates.containsKey(conversionCurrencyType.toUpperCase(Locale.ROOT)));
+        } while (!exchangeRates.getRates().containsKey(conversionCurrencyType.toUpperCase(Locale.ROOT)));
 
         // Call method to convert currency
-        BigDecimal finalAmount = calculateCurrency(currencyRates, initialAmount, (conversionCurrencyType.toUpperCase(Locale.ROOT)));
+        BigDecimal finalAmount = calculateCurrency(exchangeRates.getRates(), initialAmount, (conversionCurrencyType.toUpperCase(Locale.ROOT)));
 
         System.out.println("\n" + spacer);
         System.out.println(String.format("$%.2f in %s is %.2f", initialAmount, conversionCurrencyType.toUpperCase(Locale.ROOT), finalAmount));
         System.out.println(spacer);
 
         userInput.close();
-    }
-
-    public static void printCurrencyList(Map<String, Double> currencyRates) {
-        System.out.println("\nList of acceptable currency inputs:\n");
-
-        for (Map.Entry<String, Double> rate : currencyRates.entrySet()) {
-            System.out.println(String.format("%s : %s", rate.getKey(), rate.getValue()));
-        }
     }
 
     public static BigDecimal calculateCurrency(Map<String, Double> currencyRates, BigDecimal amount, String currencySymbol) {

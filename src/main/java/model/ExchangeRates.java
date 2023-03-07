@@ -1,15 +1,16 @@
 package model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.Map;
 
 public class ExchangeRates {
+
+    @JsonProperty("rates")
     private Map<String, Double> rates;
 
     public ExchangeRates() {}
-
-    public ExchangeRates(Map<String, Double> rates) {
-        this.rates = rates;
-    }
+    
 
     public Map<String, Double> getRates() {
         return rates;

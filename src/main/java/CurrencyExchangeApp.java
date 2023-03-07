@@ -1,4 +1,5 @@
 import model.ExchangeRates;
+import services.ExchangeRatesService;
 
 import java.math.BigDecimal;
 import java.util.Locale;
@@ -8,6 +9,8 @@ import java.util.Scanner;
 public class CurrencyExchangeApp {
 
     public static void main(String[] args) {
+        ExchangeRatesService exchangeRatesService = new ExchangeRatesService();
+
         String spacer = "============================";
 
         Scanner userInput = new Scanner(System.in);
@@ -18,7 +21,6 @@ public class CurrencyExchangeApp {
         System.out.println("Welcome to the currency exchange calculator!\n");
         System.out.print("Please enter an amount in USD without any dollar sign symbols: ");
 
-        //Get initial currency value
         boolean validInput = false;
         BigDecimal initialAmount = BigDecimal.ZERO;
 
@@ -34,7 +36,7 @@ public class CurrencyExchangeApp {
 
         System.out.println("\nCalculating...");
 
-        ExchangeRates exchangeRates = new ExchangeRates(API.accessAPI());
+        ExchangeRates exchangeRates = new ExchangeRates();
 
         System.out.println("\nWhat type of currency are you converting this to?");
         System.out.println("\nOnly enter that currency's three letter identification symbol.");

@@ -34,7 +34,6 @@ public class CurrencyExchangeApp {
 
         System.out.println("\nCalculating...");
 
-        // Access API and get currency rates
         ExchangeRates exchangeRates = new ExchangeRates(API.accessAPI());
 
         System.out.println("\nWhat type of currency are you converting this to?");
@@ -43,7 +42,6 @@ public class CurrencyExchangeApp {
 
         String conversionCurrencyType = "";
 
-        // Get currency type to convert
         do {
             conversionCurrencyType = userInput.nextLine();
 
@@ -59,7 +57,6 @@ public class CurrencyExchangeApp {
             }
         } while (!exchangeRates.getRates().containsKey(conversionCurrencyType.toUpperCase(Locale.ROOT)));
 
-        // Call method to convert currency
         BigDecimal finalAmount = calculateCurrency(exchangeRates.getRates(), initialAmount, (conversionCurrencyType.toUpperCase(Locale.ROOT)));
 
         System.out.println("\n" + spacer);

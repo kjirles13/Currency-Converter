@@ -1,3 +1,5 @@
+import org.springframework.web.client.RestTemplate;
+
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -5,10 +7,10 @@ import java.util.*;
 
 public class API {
     private Map<String, Double> rates = new HashMap<String, Double>();
-    
-
 
     public static Map<String, Double> accessAPI() {
+
+        RestTemplate restTemplate = new RestTemplate();
 
         StringBuilder information = new StringBuilder();
 

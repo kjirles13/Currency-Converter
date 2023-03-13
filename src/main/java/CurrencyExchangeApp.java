@@ -7,9 +7,10 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class CurrencyExchangeApp {
+    private static final String API_BASE_URL = "https://api.currencybeacon.com/v1/{category}?api_key={key}";
+    private static final ExchangeRatesService exchangeRatesService = new ExchangeRatesService(API_BASE_URL);
 
     public static void main(String[] args) {
-        ExchangeRatesService exchangeRatesService = new ExchangeRatesService();
 
         String spacer = "============================";
 
@@ -36,7 +37,7 @@ public class CurrencyExchangeApp {
 
         System.out.println("\nCalculating...");
 
-        ExchangeRates exchangeRates = new ExchangeRates();
+        ExchangeRates exchangeRates = exchangeRatesService.getLatest();
 
         System.out.println("\nWhat type of currency are you converting this to?");
         System.out.println("\nOnly enter that currency's three letter identification symbol.");

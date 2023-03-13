@@ -1,7 +1,6 @@
 package model;
 
 public class Meta {
-
     private int code;
 
     public Meta() {

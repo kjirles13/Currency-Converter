@@ -1,5 +1,4 @@
 import model.ExchangeRates;
-import model.Meta;
 import services.ExchangeRatesService;
 
 import java.math.BigDecimal;
@@ -49,10 +48,9 @@ public class CurrencyExchangeApp {
                 conversionCurrencyType = userInput.nextLine();
 
                 if (conversionCurrencyType.equalsIgnoreCase("L")) {
-                    System.out.println("\nList of exchange rates:\n");
-                    System.out.println(exchangeRates.toString());
-                    System.out.println(spacer);
-                    System.out.print("\nWhat type of currency are you converting this to?: ");
+                    System.out.printf("\n%s\nList of exchange rates:\n\n", spacer);
+                    printRates(exchangeRates);
+                    System.out.printf("%s\n\nWhat type of currency are you converting this to?: ", spacer);
                 } else if (!exchangeRates.containsKey(conversionCurrencyType.toUpperCase())) {
                     System.out.println("\nPlease only enter that currency's three letter identification symbol.");
                     System.out.println("If you need a list of acceptable currency types and their identification symbol, please enter 'L'\n");
@@ -62,15 +60,11 @@ public class CurrencyExchangeApp {
 
             BigDecimal finalAmount = calculateCurrency(exchangeRates, initialAmount, (conversionCurrencyType.toUpperCase()));
 
-            System.out.println("\n" + spacer);
-            System.out.printf("$%.2f in %s is %.2f", initialAmount, conversionCurrencyType.toUpperCase(), finalAmount);
-            System.out.println(spacer);
+            System.out.printf("\n%s\n$%.2f in %s is %.2f\n%s", spacer, initialAmount, conversionCurrencyType.toUpperCase(), finalAmount, spacer);
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            int code = response.getMeta().getCode();
-            System.out.println("Exception code = " + code);
-            }
+        }
 
         userInput.close();
     }
@@ -82,7 +76,7 @@ public class CurrencyExchangeApp {
 
     public static void printRates(Map<String, Double> rates) {
         for (Map.Entry<String, Double> rate : rates.entrySet()) {
-            System.out.printf("%s : %f", rate.getKey(), rate.getValue());
+            System.out.printf("%s : %f\n", rate.getKey(), rate.getValue());
         }
     }
 }

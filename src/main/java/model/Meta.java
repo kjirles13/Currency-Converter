@@ -2,6 +2,7 @@ package model;
 
 public class Meta {
     private int code;
+    private String disclaimer;
 
     public Meta() {
     }
@@ -14,4 +15,11 @@ public class Meta {
         this.code = code;
     }
 
+    public String getDisclaimer() {
+        return disclaimer;
+    }
+
+    public void setDisclaimer(String disclaimer) {
+        this.disclaimer = disclaimer;
+    }
 }

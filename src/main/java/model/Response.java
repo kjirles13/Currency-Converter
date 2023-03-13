@@ -1,9 +1,11 @@
 package model;
 
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.Map;
 
 public class Response {
-    private String date;
+    private Date date;
     private String base;
     private Map<String, Double> rates;
 
@@ -26,12 +28,28 @@ public class Response {
         this.rates = rates;
     }
 
-    public String getDate() {
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    /* public String getDate() {
         return date;
     }
 
     public void setDate(String date) {
         this.date = date;
-    }
+    }*/
 
+    @Override
+    public String toString() {
+        String exchangeRates = "";
+        for (Map.Entry<String, Double> rate : rates.entrySet()) {
+            exchangeRates = exchangeRates + rate.getKey() + " : " + rate.getValue() + "\n";
+        }
+        return exchangeRates;
+    }
 }

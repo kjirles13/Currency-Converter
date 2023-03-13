@@ -14,10 +14,4 @@ public class Meta {
         this.code = code;
     }
 
-    @Override
-    public String toString() {
-        return "Meta{" +
-                "code=" + code +
-                '}';
-    }
 }

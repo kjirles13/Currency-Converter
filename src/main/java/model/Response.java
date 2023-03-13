@@ -1,10 +1,9 @@
 package model;
 
-import java.util.Date;
 import java.util.Map;
 
 public class Response {
-    private Date date;
+    private String date;
     private String base;
     private Map<String, Double> rates;
 
@@ -27,11 +26,12 @@ public class Response {
         this.rates = rates;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
+
 }

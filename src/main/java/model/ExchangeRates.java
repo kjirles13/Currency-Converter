@@ -1,24 +1,26 @@
 package model;
 
-import java.time.LocalDate;
-import java.util.Map;
-
 public class ExchangeRates {
-
-    private int code;
-    private LocalDate date;
-    private String base;
-    private Map<String, Double> rates;
+    private Meta meta;
+    private Response response;
 
     public ExchangeRates() {
     }
 
-    public Map<String, Double> getRates() {
-        return rates;
+    public Meta getMeta() {
+        return meta;
     }
 
-    public void setRates(Map<String, Double> rates) {
-        this.rates = rates;
+    public void setMeta(Meta meta) {
+        this.meta = meta;
+    }
+
+    public Response getResponse() {
+        return response;
+    }
+
+    public void setResponse(Response response) {
+        this.response = response;
     }
 
     //JSON object class

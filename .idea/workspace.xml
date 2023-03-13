@@ -5,14 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="17b0cc12-ce6e-4160-abe3-41c37ca67e64" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/Meta.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/API.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/API.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/CurrencyExchangeApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CurrencyExchangeApp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/ExchangeRates.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/ExchangeRates.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/services/ExchangeRatesService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/ExchangeRatesService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/API.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/API.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/CurrencyExchangeApp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/CurrencyExchangeApp.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/model/ExchangeRates.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/ExchangeRates.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/services/ExchangeRatesService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/services/ExchangeRatesService.class" afterDir="false" />
     </list>

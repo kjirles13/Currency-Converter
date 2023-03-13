@@ -4,6 +4,8 @@ import model.ExchangeRates;
 import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestClientResponseException;
 import org.springframework.web.client.RestTemplate;
+
+import java.io.IOException;
 import java.util.Collections;
 import java.util.Map;
 
@@ -14,15 +16,15 @@ public class ExchangeRatesService {
     public ExchangeRatesService() {
     }
 
-    public Map<String, Double> getLatest() {
+    public Map<String, Double> getLatest() throws Exception {
         Map<String, Double> rates = null;
         Map<String, String> params = Collections.singletonMap("category", "latest");
 
         try {
             Map<String, Object> response = restTemplate.getForObject(API_BASE_URL, Map.class, params);
             rates = (Map<String, Double>) response.get("rates");
-        } catch (RestClientResponseException | ResourceAccessException e) {
-            System.out.println(e.getMessage());
+        } catch (Exception e) {
+            throw new Exception("Cannot access API");
         }
         return rates;
     }

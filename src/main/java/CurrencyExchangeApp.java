@@ -34,7 +34,12 @@ public class CurrencyExchangeApp {
 
         System.out.println("\nCalculating...");
 
-        Map<String, Double> exchangeRates = exchangeRatesService.getLatest();
+        Map<String, Double> exchangeRates;
+        try {
+            exchangeRates = exchangeRatesService.getLatest();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
 
         System.out.println("\nWhat type of currency are you converting this to?");
         System.out.println("\nOnly enter that currency's three letter identification symbol.");

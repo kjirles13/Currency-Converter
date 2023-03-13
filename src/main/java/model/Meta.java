@@ -22,4 +22,12 @@ public class Meta {
     public void setDisclaimer(String disclaimer) {
         this.disclaimer = disclaimer;
     }
+
+    @Override
+    public String toString() {
+        return "Meta{" +
+                "code=" + code +
+                ", disclaimer='" + disclaimer + '\'' +
+                '}';
+    }
 }

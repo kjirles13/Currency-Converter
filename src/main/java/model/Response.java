@@ -1,6 +1,5 @@
 package model;
 
-import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.Map;
 
@@ -36,20 +35,12 @@ public class Response {
         this.date = date;
     }
 
-    /* public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }*/
-
     @Override
     public String toString() {
-        String exchangeRates = "";
-        for (Map.Entry<String, Double> rate : rates.entrySet()) {
-            exchangeRates = exchangeRates + rate.getKey() + " : " + rate.getValue() + "\n";
-        }
-        return exchangeRates;
+        return "Response{" +
+                "date=" + date +
+                ", base='" + base + '\'' +
+                ", rates=" + rates +
+                '}';
     }
 }

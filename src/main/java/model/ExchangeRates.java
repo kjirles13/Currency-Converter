@@ -23,6 +23,4 @@ public class ExchangeRates {
         this.response = response;
     }
 
-    //JSON object class
-    // .getJSONArray
 }

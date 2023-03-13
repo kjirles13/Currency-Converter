@@ -4,41 +4,36 @@ import model.ExchangeRates;
 import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestClientResponseException;
 import org.springframework.web.client.RestTemplate;
-
 import java.util.Collections;
 import java.util.Map;
 
 public class ExchangeRatesService {
-    private final String baseUrl;
-    private RestTemplate restTemplate = new RestTemplate();
-    private final String API_KEY = "bb017cfe3c7311e2f3c774f8af75c55a";
+    private static final String API_BASE_URL = "https://api.currencybeacon.com/v1/{category}?api_key=bb017cfe3c7311e2f3c774f8af75c55a";
+    private final RestTemplate restTemplate = new RestTemplate();
 
-    public ExchangeRatesService(String url) {
-        this.baseUrl = url;
+    public ExchangeRatesService() {
     }
 
-    public ExchangeRates getLatest() {
-        ExchangeRates exchangeRates = new ExchangeRates();
-
+    public Map<String, Double> getLatest() {
+        Map<String, Double> rates = null;
         Map<String, String> params = Collections.singletonMap("category", "latest");
-        params.put("key", API_KEY);
 
         try {
-            exchangeRates = restTemplate.getForObject(baseUrl, ExchangeRates.class, params);
+            Map<String, Object> response = restTemplate.getForObject(API_BASE_URL, Map.class, params);
+            rates = (Map<String, Double>) response.get("rates");
         } catch (RestClientResponseException | ResourceAccessException e) {
             System.out.println(e.getMessage());
         }
-        return exchangeRates;
+        return rates;
     }
 
     public ExchangeRates getHistorical() {
         ExchangeRates historicalExchangeRates = new ExchangeRates();
 
         Map<String, String> params = Collections.singletonMap("category", "historical");
-        params.put("key", API_KEY);
 
         try {
-            historicalExchangeRates = restTemplate.getForObject(baseUrl, ExchangeRates.class, params);
+            historicalExchangeRates = restTemplate.getForObject(API_BASE_URL, ExchangeRates.class, params);
         } catch (RestClientResponseException | ResourceAccessException e) {
             System.out.println(e.getMessage());
         }

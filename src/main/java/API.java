@@ -10,8 +10,6 @@ public class API {
 
     public static Map<String, Double> accessAPI() {
 
-        RestTemplate restTemplate = new RestTemplate();
-
         StringBuilder information = new StringBuilder();
 
         try {
